@@ -2,12 +2,15 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Filial</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-<link rel="stylesheet" href="dist/css/adminlte.css">
+
+<title>Vendas</title>
+
+<link rel="stylesheet"
+	href="../plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../dist/css/adminlte.css">
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
 	rel="stylesheet">
@@ -49,7 +52,7 @@
 								<p>Pedido</p>
 						</a></li>
 						<li class="nav-item"><a href="/cadastrarCliente"
-							class="nav-link"> <i class="nav-icon fas fa-users"></i>
+							class="nav-link"> <i class="nav-icon fas fa-user-plus"></i>
 								<p>Cliente</p>
 						</a></li>
 						<li class="nav-item"><a href="/cadastrarUsuario"
@@ -62,58 +65,58 @@
 		</aside>
 		<div class="content-wrapper">
 			<br />
-			<form method="post">
-				<div class="content">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="card card-primary card-outline">
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card card-primary card-outline">
+								<form th:action="@{/atualizarUsuario}" th:object="${usuario}"
+									method="post">
 									<div class="card-header">
 										<div class="card-title" style="margin-top: 5px">
-											<div class="title">CADASTRO DE FILIAL</div>
+											<div class="title">ATUALIZAÇÃO DE USUÁRIO</div>
 										</div>
 										<div class="pull-right">
 											<div class="btn-group">
 												<button type="submit"
 													style="background: none; padding: 0px; border: none; outline: none"
-													title="Salvar">
+													title="Atualizar">
 													<a class="btn btn-default"><i class="fa fa-save"></i></a>
 												</button>
-
-												<a href="/filiais" class="btn btn-default" title="Listar"><i
+												<a href="/usuarios" class="btn btn-default" title="Listar"><i
 													class="fa fa-list"></i></a>
-
 											</div>
 										</div>
 									</div>
 									<div class="card-body">
-										<div class="row">
-											<div class="form-group col-md-8">
-												<label>Nome</label> <input class="form-control" type="text"
-													value="" name="nome" required="required" />
-											</div>
-											<div class="form-group col-md-4">
-												<label>Telefone</label> <input class="form-control"
-													type="tel" value="" name="telefone" required="required" />
-											</div>
-										</div>
+										<input type="hidden" name="id" th:field="${usuario.id}">
 										<div class="row">
 											<div class="form-group col-md-12">
-												<label>Endereço</label> <input class="form-control"
-													type="text" value="" name="endereco" />
+												<label for="nome" class="col-form-label">Nome</label> <input
+													type="text" th:field="${usuario.nome}" class="form-control" name="nome" required="required">
 											</div>
 										</div>
+										<div class="row">
+											<div class="form-group col-md-6">
+												<label for="codigo" class="col-form-label">Login</label>
+												<input type="text" th:field="${usuario.login}"	class="form-control" name="login" required="required">
+											</div>
+											<div class="form-group col-md-6">
+												<label for="quantidade" class="col-form-label">Senha</label>
+												<input type="password" th:field="${usuario.senha}" class="form-control" name="senha" required="required">
+											</div>										
+										</div>
 									</div>
-								</div>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
-	<script src="plugins/jquery/jquery.min.js"></script>
-	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="dist/js/adminlte.min.js"></script>
+	<script src="../plugins/jquery/jquery.min.js"></script>
+	<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../dist/js/adminlte.min.js"></script>
 </body>
 </html>
